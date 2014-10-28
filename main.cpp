@@ -17,13 +17,51 @@
 
 */
 
-#include "winux.hpp"
+#include <QtWidgets/QtWidgets>
+#include <QtWidgets/QFileDialog>
+#include <QtGui/QImage>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    WinUX win;
+    QWidget *win = new QWidget;
+
+    QString ImgI = QFileDialog::getOpenFileName(win, "Choisir l'image à convertire", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), "Images (*.png *.jpg *.jpeg)");
+
+    if(ImgI.isEmpty() || ImgI.isNull())
+    {
+        QMessageBox::critical(win, "Fichier non trouvée !", "Impossible de trouvée le fichier !");
+        exit(1);
+    }
+
+     QString ImgO = QFileDialog::getSaveFileName(win, "Choisir l'emplacement de sauvegarde", ImgI, "Images (*.png *.jpg *.jpeg)");
+
+    if(ImgO.isEmpty() || ImgO.isNull())
+    {
+        ImgO = ImgI;
+    }
+
+    QImage tmpImg(ImgI);
+
+    for(int x(0); x < tmpImg.width(); x++)
+    {
+        for(int y(0); y < tmpImg.height(); y++)
+        {
+            QRgb rgb = tmpImg.pixel(x, y);
+
+            if(rgb > 0xFFC8C8C8)
+            {
+                tmpImg.setPixel(x, y, 0xFFFFFF);
+            }
+        }
+    }
+
+    tmpImg.save(ImgO);
+
+    QMessageBox::information(win, "Yeah !", "Finis !");
+
+    win->close();
 
     return app.exec();
 }

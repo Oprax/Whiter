@@ -1,8 +1,6 @@
 QT += widgets
 
-HEADERS += \
-    winux.hpp
+HEADERS +=
 
 SOURCES += \
-    main.cpp \
-    winux.cpp
+    main.cpp

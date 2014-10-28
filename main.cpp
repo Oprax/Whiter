@@ -25,14 +25,14 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QWidget *win = new QWidget;
+    QDialog *win = new QDialog;
 
     QString ImgI = QFileDialog::getOpenFileName(win, "Choisir l'image à convertire", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), "Images (*.png *.jpg *.jpeg)");
 
     if(ImgI.isEmpty() || ImgI.isNull())
     {
         QMessageBox::critical(win, "Fichier non trouvée !", "Impossible de trouvée le fichier !");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
      QString ImgO = QFileDialog::getSaveFileName(win, "Choisir l'emplacement de sauvegarde", ImgI, "Images (*.png *.jpg *.jpeg)");
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 
     QMessageBox::information(win, "Yeah !", "Finis !");
 
-    win->close();
+    exit(EXIT_SUCCESS);
 
     return app.exec();
 }

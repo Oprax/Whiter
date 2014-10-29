@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 
     if(ImgO.isEmpty() || ImgO.isNull())
     {
-        ImgO = ImgI;
+        QMessageBox::critical(win, "Fichier non trouvée !", "Impossible de trouvée le fichier !");
+        exit(EXIT_FAILURE);
     }
 
     QImage tmpImg(ImgI);

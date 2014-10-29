@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     if(ImgI.isEmpty() || ImgI.isNull())
     {
-        QMessageBox::critical(win, "Fichier non trouvée !", "Impossible de trouvée le fichier !");
+        QMessageBox::critical(win, "Fichier non trouver !", "Impossible de trouver le fichier !");
         exit(EXIT_FAILURE);
     }
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
     if(ImgO.isEmpty() || ImgO.isNull())
     {
-        QMessageBox::critical(win, "Fichier non trouvée !", "Impossible de trouvée le fichier !");
+        QMessageBox::critical(win, "Fichier non trouver !", "Impossible de trouver le fichier !");
         exit(EXIT_FAILURE);
     }
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
     tmpImg.save(ImgO);
 
-    QMessageBox::information(win, "Yeah !", "Finis !");
+    QMessageBox::information(win, "Yeah !", "Fini !");
 
     exit(EXIT_SUCCESS);
 

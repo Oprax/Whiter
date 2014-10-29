@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-     QString ImgO = QFileDialog::getSaveFileName(win, "Choisir l'emplacement de sauvegarde", ImgI, "Images (*.png *.jpg *.jpeg)");
+    QString ImgO = QFileDialog::getSaveFileName(win, "Choisir l'emplacement de sauvegarde", ImgI, "Images (*.png *.jpg *.jpeg)");
 
     if(ImgO.isEmpty() || ImgO.isNull())
     {

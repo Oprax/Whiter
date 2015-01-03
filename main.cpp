@@ -27,7 +27,12 @@ int main(int argc, char *argv[])
 
     QDialog *win = new QDialog;
 
-    QString ImgI = QFileDialog::getOpenFileName(win, "Choisir l'image à convertire", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), "Images (*.png *.jpg *.jpeg)");
+    QString ImgI = QFileDialog::getOpenFileName(
+        win,
+        "Choisir l'image à convertire",
+        QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),
+        "Images (*.png *.jpg *.jpeg)"
+    );
 
     if(ImgI.isEmpty() || ImgI.isNull())
     {
@@ -35,7 +40,12 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    QString ImgO = QFileDialog::getSaveFileName(win, "Choisir l'emplacement de sauvegarde", ImgI, "Images (*.png *.jpg *.jpeg)");
+    QString ImgO = QFileDialog::getSaveFileName(
+        win,
+        "Choisir l'emplacement de sauvegarde",
+        ImgI,
+        "Images (*.png *.jpg *.jpeg)"
+    );
 
     if(ImgO.isEmpty() || ImgO.isNull())
     {
